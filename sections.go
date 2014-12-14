@@ -34,7 +34,7 @@ func (p Pagination) Print(pageFn func(uint) string, sep string) string {
 // formatted with this in mind.
 func (p Pagination) HTML(urlBase string) string {
 	return p.Print(func(page uint) string {
-		numStr := itoa(page)
+		numStr := itoa(page + 1)
 		if page == p.page {
 			return numStr + " "
 		}
@@ -45,7 +45,7 @@ func (p Pagination) HTML(urlBase string) string {
 // String stringifies the Sections with a simple pageFn
 func (p Pagination) String() string {
 	return p.Print(func(page uint) string {
-		return itoa(page) + " "
+		return itoa(page+1) + " "
 	}, elipses)
 }
 
