@@ -1,3 +1,4 @@
+// Package pagination implements a pagination solution for multiple front-ends
 package pagination
 
 const elipses = "..."

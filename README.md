@@ -1,7 +1,8 @@
 # pagination
 --
-    import "github.com/MJKWoolnough/Pagination"
+    import "github.com/MJKWoolnough/pagination"
 
+Package pagination implements a pagination solution for multiple front-ends
 
 ## Usage
 
