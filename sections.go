@@ -1,5 +1,5 @@
 // Package pagination implements a pagination solution for multiple front-ends
-package pagination
+package pagination // import "vimagination.zapto.org/pagination"
 
 const elipses = "..."
 
