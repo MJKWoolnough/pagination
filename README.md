@@ -1,6 +1,6 @@
 # pagination
 --
-    import "github.com/MJKWoolnough/pagination"
+    import "vimagination.zapto.org/pagination"
 
 Package pagination implements a pagination solution for multiple front-ends
 
