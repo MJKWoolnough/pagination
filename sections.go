@@ -1,9 +1,9 @@
-// Package pagination implements a pagination solution for multiple front-ends
+// Package pagination implements a pagination solution for multiple front-ends.
 package pagination // import "vimagination.zapto.org/pagination"
 
 const elipses = "..."
 
-// Pagination contains the information necessary to print a proper pagination
+// Pagination contains the information necessary to print a proper pagination.
 type Pagination struct {
 	numSections byte
 	page        uint
@@ -18,14 +18,17 @@ type Pagination struct {
 // The sep string is what is to appear between the sections.
 func (p Pagination) Print(pageFn func(uint) string, sep string) string {
 	str := ""
+
 	for i := byte(0); i < p.numSections; i++ {
 		if i != 0 {
 			str += sep
 		}
+
 		for page := p.sections[i].First; page <= p.sections[i].Last; page++ {
 			str += pageFn(page)
 		}
 	}
+
 	return str
 }
 
@@ -36,14 +39,16 @@ func (p Pagination) Print(pageFn func(uint) string, sep string) string {
 func (p Pagination) HTML(urlBase string) string {
 	return p.Print(func(page uint) string {
 		numStr := itoa(page + 1)
+
 		if page == p.page {
 			return numStr + " "
 		}
+
 		return "<a href=\"" + urlBase + numStr + "\">" + numStr + "</a> "
 	}, elipses)
 }
 
-// String stringifies the Sections with a simple pageFn
+// String stringifies the Sections with a simple pageFn.
 func (p Pagination) String() string {
 	return p.Print(func(page uint) string {
 		return itoa(page+1) + " "
@@ -59,11 +64,15 @@ func itoa(n uint) string {
 	if n == 0 {
 		return "0"
 	}
+
 	var digits [20]byte
+
 	pos := 20
+
 	for ; n > 0; n /= 10 {
 		pos--
 		digits[pos] = '0' + byte(n%10)
 	}
+
 	return string(digits[pos:])
 }
