@@ -2,7 +2,7 @@
 --
     import "vimagination.zapto.org/pagination"
 
-Package pagination implements a pagination solution for multiple front-ends
+Package pagination implements a pagination solution for multiple front-ends.
 
 ## Usage
 
@@ -14,21 +14,21 @@ type Config struct {
 }
 ```
 
-Config is the configuation for a Pagination
+Config is the configuration for a Pagination.
 
 #### func  New
 
 ```go
 func New() Config
 ```
-New returns a default configuration for Pagination
+New returns a default configuration for Pagination.
 
 #### func (Config) Get
 
 ```go
 func (c Config) Get(currPage, lastPage uint) Pagination
 ```
-Get returns the Section information for Pagination
+Get returns the Section information for Pagination.
 
 #### type Pagination
 
@@ -37,14 +37,14 @@ type Pagination struct {
 }
 ```
 
-Pagination contains the information necessary to print a proper pagination
+Pagination contains the information necessary to print a proper pagination.
 
 #### func (Pagination) HTML
 
 ```go
 func (p Pagination) HTML(urlBase string) string
 ```
-HTML calls Print with a HTML based pageFn and a simple elipses.
+HTML calls Print with a HTML based pageFn and a simple ellipses.
 
 The urlBase will have the page number appended to it, so it needs to be
 formatted with this in mind.
@@ -66,4 +66,4 @@ The sep string is what is to appear between the sections.
 ```go
 func (p Pagination) String() string
 ```
-String stringifies the Sections with a simple pageFn
+String stringifies the Sections with a simple pageFn.
