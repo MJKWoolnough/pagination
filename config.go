@@ -5,7 +5,7 @@ const (
 	defaultSurrounding = 3
 )
 
-// Config is the configuation for a Pagination.
+// Config is the configuration for a Pagination.
 type Config struct {
 	Ends, Surrounding uint
 }

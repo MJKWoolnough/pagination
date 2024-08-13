@@ -32,7 +32,7 @@ func (p Pagination) Print(pageFn func(uint) string, sep string) string {
 	return str
 }
 
-// HTML calls Print with a HTML based pageFn and a simple elipses.
+// HTML calls Print with a HTML based pageFn and a simple ellipses.
 //
 // The urlBase will have the page number appended to it, so it needs to be
 // formatted with this in mind.
