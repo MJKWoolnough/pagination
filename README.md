@@ -1,69 +1,46 @@
 # pagination
+
+[![CI](https://github.com/MJKWoolnough/pagination/actions/workflows/go-checks.yml/badge.svg)](https://github.com/MJKWoolnough/pagination/actions)
+[![Go Reference](https://pkg.go.dev/badge/vimagination.zapto.org/pagination.svg)](https://pkg.go.dev/vimagination.zapto.org/pagination)
+[![Go Report Card](https://goreportcard.com/badge/vimagination.zapto.org/pagination)](https://goreportcard.com/report/vimagination.zapto.org/pagination)
+
 --
     import "vimagination.zapto.org/pagination"
 
 Package pagination implements a pagination solution for multiple front-ends.
 
+## Highlights
+
+ - Configure how many page numbers surround the selected page and how many are listed at the beginning and end.
+ - Print in HTML, or a custom format.
+
 ## Usage
 
-#### type Config
-
 ```go
-type Config struct {
-	Ends, Surrounding uint
+package main
+
+import (
+	"fmt"
+
+	"vimagination.zapto.org/pagination"
+)
+
+func main() {
+	cfg := pagination.New()
+	cfg.Ends = 2
+	cfg.Surrounding = 2
+
+	p := cfg.Get(5, 19)
+
+	fmt.Println(p.HTML("/page?"))
+
+	// Output:
+	// <a href="/page?1">1</a> <a href="/page?2">2</a> <a href="/page?3">3</a> <a href="/page?4">4</a> <a href="/page?5">5</a> 6 <a href="/page?7">7</a> <a href="/page?8">8</a> ...<a href="/page?19">19</a> <a href="/page?20">20</a>
 }
 ```
 
-Config is the configuration for a Pagination.
+## Documentation
 
-#### func  New
+Full API docs can be found at:
 
-```go
-func New() Config
-```
-New returns a default configuration for Pagination.
-
-#### func (Config) Get
-
-```go
-func (c Config) Get(currPage, lastPage uint) Pagination
-```
-Get returns the Section information for Pagination.
-
-#### type Pagination
-
-```go
-type Pagination struct {
-}
-```
-
-Pagination contains the information necessary to print a proper pagination.
-
-#### func (Pagination) HTML
-
-```go
-func (p Pagination) HTML(urlBase string) string
-```
-HTML calls Print with a HTML based pageFn and a simple ellipses.
-
-The urlBase will have the page number appended to it, so it needs to be
-formatted with this in mind.
-
-#### func (Pagination) Print
-
-```go
-func (p Pagination) Print(pageFn func(uint) string, sep string) string
-```
-Print converts the Pagination sections into a string.
-
-The pageFn func takes a page number and returns whatever text is needed for that
-page.
-
-The sep string is what is to appear between the sections.
-
-#### func (Pagination) String
-
-```go
-func (p Pagination) String() string
-```
-String stringifies the Sections with a simple pageFn.
+https://pkg.go.dev/vimagination.zapto.org/pagination
