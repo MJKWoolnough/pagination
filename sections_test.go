@@ -3,7 +3,7 @@ package pagination
 import "testing"
 
 func TestItoa(t *testing.T) {
-	tests := []struct {
+	for n, test := range [...]struct {
 		num uint
 		str string
 	}{
@@ -21,9 +21,7 @@ func TestItoa(t *testing.T) {
 		{3999999999, "3999999999"},
 		{4000000000, "4000000000"},
 		{4294967295, "4294967295"},
-	}
-
-	for n, test := range tests {
+	} {
 		if numStr := itoa(test.num); numStr != test.str {
 			t.Errorf("test %d: expecting %q, got %q", n+1, test.str, numStr)
 		}
