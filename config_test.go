@@ -7,29 +7,33 @@ import (
 
 func newSections(n ...uint) [3]section {
 	var sections [3]section
+
 	l := len(n)
+
 	if l > 1 {
 		sections[0].First = n[0]
 		sections[0].Last = n[1]
 	}
+
 	if l > 3 {
 		sections[1].First = n[2]
 		sections[1].Last = n[3]
 	}
+
 	if l > 5 {
 		sections[2].First = n[4]
 		sections[2].Last = n[5]
 	}
+
 	return sections
 }
 
 func TestConfigGet(t *testing.T) {
-
 	noEnds := Config{0, 3}
 	noMiddle := Config{3, 0}
 	normal := Config{3, 3}
 
-	tests := []struct {
+	for n, test := range [...]struct {
 		Config
 		currPage, lastPage uint
 		sections           [3]section
@@ -65,9 +69,7 @@ func TestConfigGet(t *testing.T) {
 		{noEnds, 7, 9, newSections(4, 9)},
 		{noEnds, 8, 9, newSections(5, 9)},
 		{noEnds, 9, 9, newSections(6, 9)},
-	}
-
-	for n, test := range tests {
+	} {
 		if s := test.Get(test.currPage, test.lastPage); !reflect.DeepEqual(s.sections, test.sections) {
 			t.Errorf("test %d: expecting %v, got %v", n+1, test.sections, s.sections)
 		}
