@@ -2,7 +2,6 @@
 
 [![CI](https://github.com/MJKWoolnough/pagination/actions/workflows/go-checks.yml/badge.svg)](https://github.com/MJKWoolnough/pagination/actions)
 [![Go Reference](https://pkg.go.dev/badge/vimagination.zapto.org/pagination.svg)](https://pkg.go.dev/vimagination.zapto.org/pagination)
-[![Go Report Card](https://goreportcard.com/badge/vimagination.zapto.org/pagination)](https://goreportcard.com/report/vimagination.zapto.org/pagination)
 
 --
     import "vimagination.zapto.org/pagination"
