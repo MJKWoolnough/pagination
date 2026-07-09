@@ -1,6 +1,8 @@
 // Package pagination implements a pagination solution for multiple front-ends.
 package pagination // import "vimagination.zapto.org/pagination"
 
+import "strings"
+
 const elipses = "..."
 
 // Pagination contains the information necessary to print a proper pagination.
@@ -17,19 +19,19 @@ type Pagination struct {
 //
 // The sep string is what is to appear between the sections.
 func (p Pagination) Print(pageFn func(uint) string, sep string) string {
-	str := ""
+	var str strings.Builder
 
 	for i := byte(0); i < p.numSections; i++ {
 		if i != 0 {
-			str += sep
+			str.WriteString(sep)
 		}
 
 		for page := p.sections[i].First; page <= p.sections[i].Last; page++ {
-			str += pageFn(page)
+			str.WriteString(pageFn(page))
 		}
 	}
 
-	return str
+	return str.String()
 }
 
 // HTML calls Print with a HTML based pageFn and a simple ellipses.
